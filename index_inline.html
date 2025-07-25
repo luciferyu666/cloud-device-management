@@ -9,23 +9,30 @@
          `data-theme` on the body or html element is set to "dark", the
          dark variables override the default light values. -->
     <style>
+      /* Brand colours inspired by the WorkPass Web App.  The primary colour
+         is a soft purple and the secondary colour is a teal accent.  The
+         surface and background colours are light greys to provide
+         contrast in light mode. */
       :root {
         --color-bg: #ffffff;
-        --color-surface: #f7f7f7;
-        --color-primary: #0078d4;
-        --color-secondary: #00b7c2;
-        --color-text: #1f2933;
+        --color-surface: #f5f6fa;
+        --color-primary: #6c63ff;
+        --color-secondary: #4ecdc4;
+        --color-text: #1f1f2e;
         --color-muted: #6b7280;
-        --color-border: #e5e7eb;
+        --color-border: #d9dbe9;
       }
+      /* Dark mode palette.  Dark backgrounds and surfaces reduce eye
+         strain, while saturated purples and blues retain visual
+         consistency with the brand. */
       body[data-theme="dark"] {
-        --color-bg: #121212;
-        --color-surface: #1e1e1e;
-        --color-primary: #0d6efd;
-        --color-secondary: #00bcd4;
-        --color-text: #f5f5f5;
-        --color-muted: #9ca3af;
-        --color-border: #2d2d2d;
+        --color-bg: #0b0d17;
+        --color-surface: #151826;
+        --color-primary: #7c5dfa;
+        --color-secondary: #6ccff6;
+        --color-text: #e5e7ef;
+        --color-muted: #8a8fa5;
+        --color-border: #1f274d;
       }
       body {
         margin: 0;
