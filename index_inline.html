@@ -176,12 +176,19 @@
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-router-dom@6/umd/react-router-dom.production.min.js"></script>
+    <!-- Load Babel to enable on‑the‑fly JSX compilation.  Without Babel the browser cannot parse JSX
+         syntax inside our inline script.  Using the standalone Babel build allows the
+         browser to transpile JSX and modern JavaScript features before execution.  See
+         https://babeljs.io/docs/babel-standalone for details. -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   </head>
   <body>
     <div id="root"></div>
     <!-- Inline JavaScript: the full application logic.  This script defines
-         components, routing, theme management and renders the app. -->
-    <script>
+         components, routing, theme management and renders the app.  The script
+         type is set to "text/babel" so that Babel can transpile JSX and
+         modern syntax. -->
+    <script type="text/babel">
       (() => {
         const { useState, useEffect, useContext, createContext } = React;
         const {
@@ -510,7 +517,12 @@
         }
         document.addEventListener('DOMContentLoaded', () => {
           const rootEl = document.getElementById('root');
-          ReactDOM.render(<App />, rootEl);
+          // React 18 uses createRoot for mounting the application.  Calling
+          // createRoot once and then invoking render is the recommended way
+          // to start a React app.  This replaces the deprecated
+          // ReactDOM.render(...) API.
+          const root = ReactDOM.createRoot(rootEl);
+          root.render(<App />);
         });
       })();
     </script>
